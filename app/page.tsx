@@ -3,6 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import BriefingView from "@/components/BriefingView";
 import PostCard from "@/components/PostCard";
 import Ticker from "@/components/Ticker";
+import StreakBadge from "@/components/StreakBadge";
 import { getLatestOrCreate } from "@/lib/store";
 import { POSTS } from "@/lib/posts";
 
@@ -26,10 +27,13 @@ export default async function Home() {
 
         {/* Hero */}
         <section className="rise py-16 sm:py-24">
-          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold">
-            Elke dag 1% scherper in verkopen
-          </span>
-          <h1 className="display mt-5 text-[3.2rem] leading-[0.88] text-text sm:text-[6rem]">
+          <div className="mb-5 flex flex-wrap items-center gap-3">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold">
+              Elke dag 1% scherper in verkopen
+            </span>
+            <StreakBadge />
+          </div>
+          <h1 className="display mt-2 text-[3.2rem] leading-[0.88] text-text sm:text-[6rem]">
             Talent verliest.
             <br />
             <span className="glow-text text-gold">Discipline</span> wint.

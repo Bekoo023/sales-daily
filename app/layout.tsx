@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Anton, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SiteFooter from "@/components/SiteFooter";
+import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "sonner";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -52,6 +54,20 @@ export default function RootLayout({
       <body className="grain flex min-h-screen flex-col">
         <div className="flex-1">{children}</div>
         <SiteFooter />
+        <Analytics />
+        <Toaster
+          theme="dark"
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: "#131317",
+              border: "1px solid #2b2b33",
+              color: "#f1efe9",
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: "12px",
+            },
+          }}
+        />
       </body>
     </html>
   );

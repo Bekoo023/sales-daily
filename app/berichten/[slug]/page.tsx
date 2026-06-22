@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import LearnButton from "@/components/LearnButton";
 import { POSTS, getPost } from "@/lib/posts";
 import { siteUrl } from "@/lib/site";
 
@@ -81,7 +82,14 @@ export default async function PostPage({
         </div>
       </article>
 
-      {/* Deel */}
+      {/* Leren + Delen */}
+      <div className="border-t border-line py-8">
+        <div className="mb-5 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+          Jouw voortgang
+        </div>
+        <LearnButton slug={post.slug} />
+      </div>
+
       <div className="border-t border-line py-8">
         <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
           Deel deze regel

@@ -1,5 +1,7 @@
 import type { Briefing } from "@/lib/types";
 import { formatLongDate, editionNumber, formatTime } from "@/lib/date";
+import CopyButton from "@/components/CopyButton";
+import Countdown from "@/components/Countdown";
 
 export default function BriefingView({ briefing }: { briefing: Briefing }) {
   const longDate = formatLongDate(briefing.editionDate);
@@ -37,6 +39,12 @@ export default function BriefingView({ briefing }: { briefing: Briefing }) {
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-dim sm:text-xl">
           {briefing.lede.body}
         </p>
+        <div className="mt-4">
+          <CopyButton
+            text={`${briefing.lede.title}\n\n${briefing.lede.body}`}
+            label="Kopieer waarheid"
+          />
+        </div>
       </section>
 
       {/* Nieuws dat telt */}
@@ -96,6 +104,12 @@ export default function BriefingView({ briefing }: { briefing: Briefing }) {
           <p className="mt-4 text-[15px] leading-relaxed text-dim">
             {briefing.tactic.body}
           </p>
+          <div className="mt-5">
+            <CopyButton
+              text={`${briefing.tactic.title}\n\n${briefing.tactic.body}`}
+              label="Kopieer tactiek"
+            />
+          </div>
         </div>
 
         {/* Metric */}
@@ -119,10 +133,13 @@ export default function BriefingView({ briefing }: { briefing: Briefing }) {
 
       {/* Footer */}
       <footer className="mt-12 flex flex-col gap-3 border-t border-line pt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-faint sm:flex-row sm:items-center sm:justify-between">
-        <span>
-          {briefing.isLive ? "Live gegenereerd" : "Demo"} ·{" "}
-          {formatTime(briefing.generatedAt)} (CET) · vernieuwt dagelijks
-        </span>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
+          <span>
+            {briefing.isLive ? "Live gegenereerd" : "Demo"} ·{" "}
+            {formatTime(briefing.generatedAt)} (CET) · vernieuwt dagelijks
+          </span>
+          <Countdown />
+        </div>
         <span className="text-gold">elke dag 1% scherper ✦</span>
       </footer>
     </>
